@@ -12,15 +12,16 @@
 
 ```mermaid
 graph LR
-    User[User] -->|POST /upload| Web[Flask Web (Gunicorn)]
-    Web -->|1. Save Temp| Disk[Local Volume]
-    Web -->|2. Enqueue Job| Redis[Redis Queue]
-    
+    User[User] -->|POST /upload| Web[Flask_Web_Gunicorn]
+    Web -->|1. Save Temp| Disk[Local_Volume]
+    Web -->|2. Enqueue Job| Redis[Redis_Queue]
+
     subgraph Background_Processing
-        Worker[RQ Worker] -->|3. Dequeue| Redis
-        Worker -->|4. Process & Upload| MinIO[MinIO Object Store]
-        Worker -->|5. Update DB| DB[(SQL Database)]
+        Worker[RQ_Worker] -->|3. Dequeue| Redis
+        Worker -->|4. Process & Upload| MinIO[MinIO_Object_Store]
+        Worker -->|5. Update DB| DB[(SQL_Database)]
     end
+
 ```
 ## ⚡ Performance Engineering
 
